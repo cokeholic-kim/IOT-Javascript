@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div  {
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+        }
+        div p {
+            width: 80px;
+            line-height: 80px;
+            border: 1px solid #333;
+            text-align: center;
+            border-radius:50% ;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>로또 번호 출력하기</h1>
+    <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <button onclick="clicked()">클릭</button>
+    <script>
+        // 1부터 45까지 배열
+        let lotto = []
+        for(let i=1;i<=45;i++){
+            lotto.push(i)
+        }   
+        for(let i=1;i<7;i++){
+            let random = Math.floor(Math.random()*lotto.length);
+            document.querySelector(`div p:nth-child(${i})`).innerHTML =lotto[random];
+            console.log(random)
+            lotto.splice(random,1)
+        }     
+        function clicked(){
+            let lotto = []
+            for(let i=1;i<=45;i++){
+            lotto.push(i)
+            }
+            for(let i=1;i<7;i++){
+            let random = Math.floor(Math.random()*lotto.length);
+            document.querySelector(`div p:nth-child(${i})`).innerHTML =lotto[random];
+            console.log(random)
+            lotto.splice(random,1)
+            }     
+        }
+
+
+    </script>
+</body>
+</html>

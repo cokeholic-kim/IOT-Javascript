@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 5000px;
+        }
+        #container{
+            width: 1000px;
+            height: 500px;
+            background-color: bisque;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            position: absolute;
+            left: 0;
+            right: 0;
+            border-radius: 50%;
+            transition: 0.5s;
+            transform: translate(-50%,-50%);
+        }
+        p{
+            position: fixed;
+            background-color: black;
+            width:200px;
+            height: 80px;
+            right: 50px;
+            top: 50px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="container"></div>
+    <p></p>
+    <script>
+        let p = document.querySelector("p");
+        let div = document.querySelector("#container");
+        let box = document.querySelector("#box");
+        console.log(div);
+        window.addEventListener("scroll",function(){
+           let a = document.documentElement.scrollTop;
+           document.querySelector("p").innerHTML = a
+           if(a >= 500){
+            document.body.style.background = "red";
+           }else{
+            document.body.style.background = "white";
+
+           }
+        })
+        div.addEventListener("click",function(event){
+           let x =event.pageX;
+           let y =event.pageY;
+           box.style.left = `${x}px`
+           box.style.top = `${y}px`
+
+           console.log(`x의 좌표는 ${x}이고 y의 좌표는 ${y}이다`)
+        })
+        // p를 클릭했을때 ~ 실행
+        p.addEventListener("click",function(){
+            window.scrollTo({top:0,behavior:`smooth`});
+        })
+    </script>
+</body>
+</html>

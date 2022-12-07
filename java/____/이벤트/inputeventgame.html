@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h2{
+            background-color: lightpink;
+            color: #fff;
+            padding: 10px;
+            font-size: 44px;
+            text-align: center;
+        }
+        #gamebox{
+            text-align: center;
+        }
+        #quest{
+            color: lightpink;
+            font-size: 36px;
+            padding: 30px;
+            font-weight: bold;
+        }
+        #InputBox{
+            width:150px;
+            height:30px;
+            margin: 10px 0;
+        }
+        #gamebox button{
+            background-color: #fff;
+            width:150px;
+            height:30px;
+            margin-top: 20px;
+            border: 1px solid #333;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>타자게임</h2>
+    <div id="gamebox">
+        <p id="quest">color</p>
+        <input type="text" id="InputBox">
+        <p id="time">time</p>
+        <button>게임종료</button>
+    </div>
+    <script>
+        const question = ["red","orange","yellow","green","blue"]
+        const questpart = document.querySelector("#quest");
+        const time = document.querySelector("#time")
+        const myInput = document.querySelector("#InputBox")
+        let timing = 5
+        let score = 0
+        
+        questpart.innerHTML = question[0]
+        //  문제를 퀘스트파트에 연결
+        function inputgame(){
+            if(myInput.value === questpart.innerHTML){
+                console.log("정답입니다.")
+                myInput.value = "";
+                score++
+                timing =20
+                let randNum = Math.floor(Math.random()*question.length);
+                questpart.innerHTML = question[randNum] //랜덤숫자로 연결
+                // 정답이면 다음문제
+            }
+            
+        }
+        //점수판과 시간 set interval 로 1초마다 반복
+        function scoretime(){
+            time.innerHTML = `남은시간:${timing}초 점수: ${score}점`
+            timing--
+            stopTime()
+        }
+        timer=setInterval(() => {
+            scoretime()
+        }, 1000);
+
+        // 타이머를 멈춰줌
+        function stopTime(){
+            if(timing === -1){
+                clearInterval(timer)
+                console.log("timeout")
+                myInput.value = "timeout"
+            }
+        }
+        myInput.addEventListener("input",inputgame)
+    </script>
+</body>
+</html>

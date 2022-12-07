@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // this는 window바인딩
+        //객체.메소드()=> this는 객체를 바인딩
+        //dom 이벤트 발생시 => this는 이벤트를 발생시킨 dom을 바인딩
+        let stu = {
+            name:"gg",
+            age:30
+        }
+        function printName(){
+            console.log(this.name) 
+        }
+        function updateObj(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        printName.call(stu); //call이 함수의this를 stu객체로 지정함
+        updateObj.call(stu,"aaa",20);
+        console.log(stu)
+        updateObj.apply(stu,["bbb",30])
+        console.log(stu)
+
+        const numArr = [1,2,3,4,5];
+        let maxNumber = Math.max.apply(null,numArr); //배열을 풀어서 넣어야함
+        //maxNumber = Math.max.apply(null,[1,2,3,4,5]);
+        let maxNumber2 = Math.max.call(null,...numArr)
+        //let maxNumber2 = Math.max.call(null,1,2,3,4,5)
+        console.log(maxNumber)
+        console.log(maxNumber2)
+        const aa = {
+            x:50,
+            getX:function(){
+                return this.x;
+            }
+        }
+        const newFun = aa.getX; //객체의 getx 함수가 newfun 에 저장됨
+        const nnewFun = newFun.bind(aa);
+        console.log(newFun()) // newfun에 저장된 getx함수의 this 는 윈도우를 보고있음
+        console.log(nnewFun())
+    </script>
+</body>
+</html>

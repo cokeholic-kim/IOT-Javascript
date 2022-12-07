@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #dice{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #333;
+            border-radius: 30px;
+            left: 35%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            
+        }
+        #dice span{
+            
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            margin: 20px;
+
+        }
+        #dice.on{
+            animation: dicebell 0.5s alternate ;
+            animation-iteration-count: 3;
+        }
+        @keyframes dicebell {
+            0%{transform: rotate(-15deg);}
+            100%{transform: rotate(15deg);}
+        }
+    </style>
+</head>    
+        
+<body>
+    <div id="dice" class="">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p id="com"></p>
+    <p id="human"></p>
+    <p id="result"></p>
+    <script>
+        //주사위눈금 1~6
+        // 컴퓨터와 사람 랜덤하게 주사위 값을 지정
+        // 지정된 주사위 값을 출력
+        //주사위값을 비교하여 승리자를 출력
+        function humandice(){
+            return Math.floor(Math.random()*6+1);
+        }
+        function com_dice(){
+            return Math.floor(Math.random()*6+1);
+        }
+        function dicegame(){
+            document.querySelector("#dice").classList.add("on")
+            let HumandiceNum = (humandice());
+            let Com_diceNum = (com_dice());
+            document.querySelector("#com").innerHTML =`컴퓨터의 주사위는 ${Com_diceNum}입니다.`
+            document.querySelector("#human").innerHTML =`당신의 주사위는 ${HumandiceNum}입니다.`
+            console.log(`컴퓨터의 주사위는 ${Com_diceNum}입니다.`);
+            console.log(`당신의 주사위는 ${HumandiceNum}입니다.`);
+            if(HumandiceNum == Com_diceNum){
+                document.querySelector("#result").innerHTML="비겼습니다."
+                console.log("비겼습니다");
+            }else if(HumandiceNum > Com_diceNum){
+                document.querySelector("#result").innerHTML="당신이 이겼습니다."
+                console.log("당신이 이겼습니다.");
+            }else if(HumandiceNum < Com_diceNum){
+                document.querySelector("#result").innerHTML="당신이 졌습니다 휴먼"
+                console.log("당신이 졌습니다 휴먼");
+                const img =document.createElement("img");
+                img.src = "images.jpg";
+                document.body.appendChild(img);
+            }
+        }
+        document.querySelector("#dice").addEventListener("click",dicegame)
+    </script>
+</body>
+</html>

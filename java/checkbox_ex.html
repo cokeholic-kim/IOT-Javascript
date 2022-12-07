@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="fruitsForm">
+        <p>전체선택<input type="checkbox" name="allcheck"></p>
+        <p>사과 <input type="checkbox" value="사과" name="fruits"></p>
+        <p>오렌지 <input type="checkbox" value="오렌지" name="fruits"></p>
+        <p>바나나 <input type="checkbox" value="바나나" name="fruits"></p>
+        <p id="result"></p>
+    </form>
+    <p><button id="resultbtn">결과보기</button></p>
+    <p><button id="checkall">모두체크</button></p>
+    <script>
+        const fruits = document.forms.fruitsForm.fruits;
+        const resultbutton = document.querySelector("#resultbtn");
+        const allcheck = document.querySelector("#checkall");
+
+        const result = document.querySelector("#result");
+        resultbutton.addEventListener("click",function(){
+            let str = "";
+            fruits.forEach(input=>{
+               str = input.checked ? str + `<p>${input.value}</p>` : str;
+            })
+            result.innerHTML = str;
+        })
+        allcheck.addEventListener("click",function(){
+            fruits.forEach(a=>a.checked=true);
+        })
+    </script>
+</body>
+</html>

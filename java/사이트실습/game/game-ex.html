@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: #eee;
+        }
+        body{
+            display: flex;
+        }
+        #charset{
+            margin-left: 30px;
+        }
+        #dice{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #333;
+            cursor: pointer;
+            margin-bottom: 30px ;
+        }
+        #dice img{
+            width: 100%;
+        }
+        #options{
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1300" height="900"></canvas>
+    <div id="charset">
+        <div id="dice"></div>
+        <div id="options">
+            <h2>Player</h2>
+            <p>level</p>
+            <p>hp</p>
+            <p>sp</p>
+            <p>point</p>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/dice.js"></script>
+</body>
+</html>

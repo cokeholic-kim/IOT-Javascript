@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+ </head>
+ <body>
+ <div id="back"></div>
+ <!-- 상단 제목 -->
+  <header>
+	<h1><img src="img/logo.png" alt=""></h1>
+  </header>
+ <!-- 메뉴 --> 
+  <nav>
+	<ul>
+		<li>
+			<a href="">COLLECTION</a>
+			<div>
+				<div><img src="img/thumb1.jpg" alt=""></div>
+				<h2>COLLECTION</h2>
+				<ul>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="#">STORE LOCATION</a>
+			<div>
+				<div><img src="img/thumb2.jpg" alt=""></div>
+				<h2>STORE LOCATION</h2>
+				<ul>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="#">ADVERTISEMENT</a>
+			<div>
+				<div><img src="img/thumb3.jpg" alt=""></div>
+				<h2>ADVERTISEMENT</h2>
+				<ul>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="#">ONLINE STORE</a>
+			<div>
+				<div><img src="img/thumb4.jpg" alt=""></div>
+				<h2>ONLINE STORE</h2>
+				<ul>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="#">CONTACT</a>
+			<div>
+				<div><img src="img/thumb5.jpg" alt=""></div>
+				<h2>CONTACT</h2>
+				<ul>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="#">CORPORATE</a>
+			<div>
+				<div><img src="img/thumb6.jpg" alt=""></div>
+				<h2>CORPORATE</h2>
+				<ul>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+					<li><a href="#">menu item</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+  </nav>
+ <!-- 이미지 -->
+  <section>
+	<img src="img/pic50.jpg" alt="">
+  </section>
+ <!-- 하단 -->
+  <footer>
+	<ul>
+		<li><a href="#">Terms of Use</a></li>
+		<li><a href="#">News letter</a></li>
+		<li><a href="#">Sitemap</a></li>
+		<li><a href="#">Careers</a></li>
+		<li><a href="#">Credits</a></li>
+		<li><a href="#">Privacy Notice</a></li>
+	</ul>
+	<span>Copyright (c) 2018 SARAR INT All Rights Reserved.</span>
+  </footer>
+  <script>
+	let src = document.querySelector("section");
+	let imgstr = ""
+	for(let i =0;i<=200;i++){
+		imgstr = imgstr + `<img src="img/pic${i}.jpg">`;
+	}
+	src.innerHTML = imgstr;
+	src.addEventListener("mousemove",function(event){
+		const imgs = document.querySelectorAll("section img");
+		let winW = window.innerWidth;
+		let imgNum = Math.floor(event.pageX/winW*200);
+		console.log(imgNum)
+		// img매개변수는 img태그가 차례로 들어감
+		// index매개변수에는 index번호가 들어감
+		imgs.forEach((img,index)=>{
+			if(index != imgNum){
+				img.style.display="none"
+			}else{
+				img.style.display="block"
+			}
+		})
+	})
+  </script>
+  <!-- <script src="./js/sarar.js"></script> -->
+ </body>
+</html>

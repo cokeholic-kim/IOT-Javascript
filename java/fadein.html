@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        body{
+            width: 100%;
+            height: 100vh;
+        }
+        li{
+            list-style: none;
+        }
+        /* @keyframes fadein {
+            0%{ opacity: 0.4;}
+            100%{ opacity: 1;}
+        } */
+        ul{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            /* animation: fadein 0.5s; */
+            width: 800px;
+            height: 600px;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+        }
+        ul li{
+            width: 800px;
+            height: 600px;
+        }
+        ul li img{
+            width: 800px;
+            height: 600px;
+        }
+        .on{
+            right: 600px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="fadeimg"><img src="img/img_lights1.jpg" alt=""></li>
+        <li class="fadeimg"><img src="img/img_lights2.jpg" alt=""></li>
+        <li class="fadeimg"><img src="img/img_lights3.jpg" alt=""></li>
+        <li class="fadeimg"><img src="img/img_lights4.jpg" alt=""></li>
+    </ul>
+    <script>
+        // let imgDivs = document.querySelectorAll(".fadeimg");
+        // let indexNum = 0;
+        // let nextNum;
+        // imgDivs.forEach(div => div.style.display="none");
+        // imgDivs[0].style.display = "block"
+        // setInterval(function(){
+        //     nextNum = (indexNum+1)%4
+        //     imgDivs[indexNum].style.display="none";
+        //     imgDivs[nextNum].style.display="block";
+        //     indexNum = nextNum
+        // },3000)
+        let imgDivs = document.querySelectorAll(".fadeimg");
+        let indexNum = 0;
+        let nextNum;
+        setInterval(function(){
+            imgDivs[indexNum].style.display="none";
+            indexNum= (indexNum+1)%4
+        },3000)
+
+    </script>
+</body>
+</html>

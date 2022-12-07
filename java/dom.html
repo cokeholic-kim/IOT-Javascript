@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>green</h1>
+        <ul>
+            <li onmouseenter="backyellow()" onmouseleave="backRed()">list1</li>
+            <li >list2</li>
+            <li>list3</li>
+            <li>list4</li>
+        </ul>
+    </div>
+    <script>
+        function backyellow(){
+            document.querySelector("div").style.background ="yellow";
+        }
+        function backRed(){
+            document.querySelector("div").style.background ="red";
+
+        }
+
+        let a = document.querySelector("li:nth-child(2)");
+        let isPink = 0
+        a.addEventListener("click",function(){
+            if(!isPink){
+                a.style.background = "pink";
+            }else{
+                a.style.background = "blue";
+            }
+            isPink = !isPink;
+           console.log(isPink)
+        })
+    </script>
+</body>
+</html>

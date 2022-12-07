@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(name,age,enrolled,score){
+            this.name =name;
+            this.age = age;
+            this.enrolled= enrolled;
+            this.score = score;
+        }
+        let student = [
+            new Student("재훈",32,true,80),
+            new Student("수민",22,false,90),
+            new Student("세영",22,false,85),
+            new Student("재원",23,true,95)
+        ]
+        console.log(student);
+
+        let scores = [85,65,75,80,90,95];
+        //find 배열에서 해당하는 하나의 값을 찾으면 그 값을 리턴하고 
+        let result = scores.find(i => i>80);
+        console.log(result,"find");
+        //filter 배열에서 조건에 맞는 배열요소들을 새로운 배열로 리턴
+        let result2 = scores.filter(i=> i>80);
+        console.log(result2,"filter")
+        let result3 =scores.map(i=> i+10);
+        console.log(result3,"map")
+
+        let score90  = student.find(i=>i.score === 90)
+        let score91  = student.find(function(student){
+           return student.score === 90;
+        })
+
+        console.log(score90.name)        
+        console.log(score91.name)        
+        // students배열에서 enrolled가 true인 학생들
+        let result6 = student.filter(student => student.enrolled === true)
+        console.log(result6)        
+        // students 에서 score만 배열로 만들기
+        let result7 = student.map(student=>student.score)
+        console.log(result7)        
+        
+        
+        //버거 생성자 
+        function Makeburger(burgername,price,size){
+            return{burgername,price,size}
+        }
+        // 버거 배열
+        const burgers = [
+            Makeburger("새우버거",5000,"big"),
+            Makeburger("불고기버거",4500,"regular"),
+            Makeburger("쥬니어불고기버거",3500,"small"),
+            Makeburger("치즈버거",5500,"regular"),
+            Makeburger("스테이크버거",7000,"big"),
+            Makeburger("치킨버거",5500,"regular"),
+            Makeburger("야채버거",4500,"regular"),
+            Makeburger("쥬니어새우버거",3000,"small"),
+        ]
+        console.log(burgers);
+        // 햄버거 이름만 배열로
+        const NameofBurger = burgers.map(name =>name.burgername);
+        console.log(NameofBurger);
+        // 가격이 5000원 이상인 햄버거만 배열로
+        const PriceofBurger = burgers.filter(price =>price.price >= 5000);
+        console.log(PriceofBurger);
+        // 이름이 스테이크버거인 햄버거 찾기
+        const steakBurger = burgers.find(name =>name.burgername === "스테이크버거");
+        console.log(steakBurger);
+
+    </script>
+</body>
+</html>

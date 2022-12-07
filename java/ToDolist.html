@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #wrap{
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #listheader{
+            background: linear-gradient(to right,#fc5d7d,#6a82fb);
+            text-align: center;
+            padding-bottom: 30px;
+
+        }
+        #listheader h1{
+            color: #fff;
+            padding-top: 40px;
+        }
+        #listheader input{
+            width: 70%;
+            height: 40px;
+            border-radius: 20px;
+            border: 0;
+            outline: 0;
+            padding-left: 20px;
+        }
+        #listheader button{
+            background: transparent;
+            border: 0;
+            color: #fff;
+            font-size: 42px;
+            margin-left: 10px;
+        }
+        li{
+            list-style: none;
+            line-height: 50px;
+            padding: 0 10%;
+            background-color: #eee;
+        }
+        li:hover{
+            background-color: #ddd;
+        }
+        li span{
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="listheader">
+            <h1>To Do List</h1>
+            <div>
+                <input type="text" id="listinput">
+                <button onclick="">+</button>
+            </div>
+        </div>
+        <div id="todolist">
+            <ul id="listul">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        const btn = document.querySelector("button");
+        const input = document.querySelector("input");
+        const ul = document.querySelector("ul")
+        btn.addEventListener("click",addList)
+        // li를 추가하는 함수
+        function addList (){
+            if(!input.value){
+                return; // 리턴을 해주면 함수가 종료됨 값이없으면 함수종료
+            }
+            // input의 값을 litext에 할당
+            let litext=input.value;
+            let li = document.createElement("li");
+            li.innerHTML = `${litext}<span>X</span>`;
+            // li를 ul에 추가
+            ul.appendChild(li);
+            input.value = "" ;
+            spanEvent()
+        }
+        // span요소에 이벤트를 연결
+        function spanEvent(){
+            let spans = document.querySelectorAll("li span");
+            if(!spans){
+                return
+            }
+            spans.forEach(a=>a.addEventListener("click",function(){
+                this.parentElement.remove();
+            }))
+        }
+    </script>
+</body>
+</html>

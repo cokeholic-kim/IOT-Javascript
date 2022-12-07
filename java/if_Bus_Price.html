@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>버스요금</h1>
+    <div id="price">
+        <p></p>
+        <p></p>
+    </div>
+    <script> 
+        const birthyear = Number(prompt("몇년생이신가요 0000"));
+        const Todayyear = new Date().getFullYear();
+        let Howold = Todayyear - birthyear
+        console.log(Howold);
+        let Status;
+        let Price;
+        const StatusTag = document.querySelector("#price p:first-child"); 
+        const priceTag = document.querySelector("#price p:nth-child(2)"); 
+        // let customerAge =Number (prompt("How old are you?"));
+        if(!Howold){
+            alert("How old are you?");
+        }else if(Howold < 0 || isNaN(Howold)){
+            alert("값을 제대로 입력해주세요");
+        }else if(Howold <= 7){
+            StatusTag.innerHTML = "미취학 아동(7세 이하)"
+            priceTag.innerHTML = "0원"
+        }else if(Howold <= 13){
+            StatusTag.innerHTML = "어린이(8세 이상 13세 이하)"
+            priceTag.innerHTML = "450원"
+        }else if(Howold <= 19){
+            StatusTag.innerHTML = "청소년(14세 이상 19세 이하)"
+            priceTag.innerHTML = "720원"
+        }else if(Howold >= 20 && Howold <= 70 ){
+            StatusTag.innerHTML = "일반(20세 이상)"
+            priceTag.innerHTML = "1200원"
+        }else if(Howold >= 70 ){
+            StatusTag.innerHTML = "노인(70세 이상)"
+            priceTag.innerHTML = "0원"
+        }
+    </script>
+</body>
+</html>

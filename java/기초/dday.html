@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 50px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>D-day 계산기</h1>
+    <div id="inputs">
+        <input type="text" id="year" name="year" placeholder="year">
+        <input type="text" id="month" name="month" placeholder="month">
+        <input type="text" id="date" name="date" placeholder="date">
+    </div>
+    <button>클릭</button>
+    <p id="result"></p>
+    <script>
+        const targetyear =document.querySelector("#year")
+        const targetmonth =document.querySelector("#month")
+        const targetdate =document.querySelector("#date")
+        // targetdate dday를 계산
+        document.querySelector("button").addEventListener("click",function(){
+            let date = checkdate();
+            let today = new Date();
+            let targetdate1 = new Date(date.year,date.month,date.date);
+            // 타겟날짜에서 오늘날짜를 빼줌
+            let re =Math.floor((targetdate1.getTime()-today.getTime())/(1000*60*60*24))
+            document.querySelector("#result").innerHTML = `d-${re+1}`
+        })
+        function checkdate(){
+            if(!targetyear.value||!targetmonth.value||!targetdate.value){
+                alert("숫자입력")
+                return
+            }
+            if(isNaN(Number(targetyear.value))||isNaN(Number(targetmonth.value))||isNaN(Number(targetdate.value))){
+                alert("숫자로입력")
+                return
+            }
+            let targetdate2 = {
+                year:Number(targetyear.value),
+                month:Number(targetmonth.value)-1,
+                date:Number(targetdate.value)
+            };
+            return targetdate2;
+        }
+    </script>
+</body>
+</html>

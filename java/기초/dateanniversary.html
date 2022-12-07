@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            margin: 30% auto;
+            width: 70%;
+            height: 30vh;
+            border: 3px solid lightpink;
+            border-radius: 15px;
+        }
+        header{
+            width: 100%;
+            height: 30%;
+            background-color: lightpink;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            margin-top: -3px;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 70%;
+        }
+        main p:nth-child(2) span{
+            background-color: lightpink;
+            padding: 10px;
+            border-radius: 15px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header></header>
+        <main>
+            <p>
+                <input type="text" id="year">
+                <input type="text" id="month">
+                <input type="text" id="date">
+            </p>
+            <p>
+                <span id="day50">50일은?</span>
+                <span id="day100">100일은?</span>
+                <span id="dday">오늘은 몇일째</span>
+            </p>
+            <p>
+                <h2>우리가 만난지n일째 입니다</h2>
+            </p>
+        </main>
+    </div>
+    <script>
+        const year = document.querySelector("#year");
+        const month = document.querySelector("#month");
+        const date = document.querySelector("#date");
+
+        const day50 = document.querySelector("#day50");
+        const day100 = document.querySelector("#day100");
+        const dday = document.querySelector("#dday");
+        const today = new Date();
+        const todayyear = today.getFullYear()
+        const todaymonth = today.getMonth()
+        const todaydate = today.getDate()
+
+
+        // 50일은? 
+        day50.addEventListener("click",function(){
+           let afterday50=today.getTime() + (50*24*60*60*1000);
+           
+        })
+
+    </script>
+</body>
+</html>

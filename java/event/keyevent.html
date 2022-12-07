@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{list-style: none;}
+        ul{
+            align-items: flex-end;
+            display: flex;
+            position: relative;
+            border: 1px solid #333;
+            justify-content: center;
+            height: 100vh;
+        }
+        li{
+            align-self: flex-end;
+            line-height: 100vh;
+            width: 4%;
+            transition: 0.3s;
+        }
+        li.on{
+            background-color: aquamarine;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li id="Numpad1">1</li>
+            <li id="Numpad2">2</li>
+            <li id="Numpad3">3</li>
+            <li id="Numpad4">4</li>
+            <li id="Numpad5">5</li>
+            <li id="Numpad6">6</li>
+            <li id="Numpad7">7</li>
+            <li id="Numpad8">8</li>
+            <li id="Numpad9">9</li>
+        </ul>
+    </div>
+    <script>
+        // 키보드의 키를 눌렀을때
+        window.addEventListener(`keydown`,function(e){
+            console.log(e.code);
+            const key = document.querySelector(`#${e.code}`);
+            if(key){
+                key.classList.add("on");
+            }
+        })
+        // 키보드의 키를 땟을때
+        window.addEventListener(`keyup`,function(e){
+            const key = document.querySelector(`#${e.code}`);
+            if(key){
+                key.classList.remove("on");
+            }
+        })
+            
+        
+    </script>
+</body>
+</html>

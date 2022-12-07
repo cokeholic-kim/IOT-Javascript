@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const xhr = new XMLHttpRequest(); //객체생성
+        xhr.open("POST","https://jsonplaceholder.typicode.com/posts"); //메소드 ,url정의
+        xhr.setRequestHeader("content-type","application/json; charset=UTF-8"); //헤더값 content-type을 json으로 정의
+        xhr.send(JSON.stringify({title:"foo",body:"bar",userId: 1}));// send()에 매개변수를 담아서 전송 body 에 담겨 전송됨 객체가 직렬로 전송됨.,
+        //send를 하면 response 에 응답값 이 담김.
+        xhr.onload = () =>{
+            if(xhr.status===201){
+                const res = JSON.parse(xhr.response);
+                console.log(res);
+            }else{
+                // 에러발생
+                // 응답 상태와 응답메시지 출력
+                console.error(xhr.status,xhr.statusText);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #background{
+            background-color: red;
+            width: 1000px;
+            height: 500PX;
+            text-align: center;
+            color: #fff;
+            font-size: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="background" ></div>
+    <button onclick="chBackGround('pink')">pink색상</button>
+    <button onclick="chBackGround('red')">red색상</button>
+    <button onclick="chBackGround('blue')">blue색상</button>
+    <button onclick="chBackGround('green')">green색상</button>
+    <button onclick="checkBackground()">배경색상알기</button>
+    <script >
+        // let a  = 0
+        // const divboxinnerText =["하나","둘","무","야","호"]
+        // const color = ["red","tomato","aqua","thistle","darkred"]
+        // const bg = document.querySelector("#background");
+        // function clickedbtn (){
+        //     if(a > color.length-1){
+        //         a = 0;
+        //     }
+        //     bg.style.backgroundColor = color[a];
+        //     bg.innerHTML = divboxinnerText[a];
+        //     console.log(a)
+        //     a++
+        // }
+        // 1.버튼을 클릭할경우 div의 배경색을 변경
+        // object.style.backgroundColor = "green"
+        function chBackGround(color){
+            document.querySelector("div").style.background = color;
+        }
+        function checkBackground(){
+            let div =document.querySelector("div")
+            let bgColor = window.getComputedStyle(div).getPropertyValue("background-color")
+            alert(bgColor);
+
+        }
+    </script>
+</body>
+
+</html>
+<!-- color[Math.floor(Math.random()*color.length)] -->

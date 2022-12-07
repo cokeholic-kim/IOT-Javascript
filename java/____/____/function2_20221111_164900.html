@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #calculator{
+            height: 500px;
+            width: 400px;
+            border: 1px solid #333;
+            display: grid;
+            grid-template-rows: repeat(4,1fr);
+            grid-template-columns: repeat(3,1fr);
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1 class="calcresult"></h1>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+    </div>
+
+
+
+    <script>
+        function plus(a,b){
+            return a+b
+        }
+        function minus(a,b){
+            return a-b
+        }
+        function divide(a,b){
+            return a/b
+        }
+        function multiple(a,b){
+            return a*b
+        }
+        function powered(a,b){
+            return a**b
+        }
+        console.log(plus(2,3))
+        console.log(minus(2,3))
+        console.log(divide(2,3))
+        console.log(multiple(2,3))
+        console.log(powered(2,3))
+        
+        const calculator = {
+            add:(a,b)=> a+b,
+            minus:(a,b)=> a-b,
+            divide:(a,b)=> a/b,
+            multiple:(a,b)=> a*b,
+            powered:(a,b)=> a**b
+        }
+
+        function ifcalc(a,b,c){
+            if(b == "+"){
+               return plus(a,c);
+            }else if(b == "-"){
+                return minus(a,c);
+            }else if(b == "/"){
+                return divide(a,c);
+            }else if(b == "*"){
+                return multiple(a,c);
+            }else if(b == "**"){
+                return powered(a,c);
+            }else{
+                alert("fuck you math");
+            }
+        }
+        
+
+
+    </script>
+</body>
+</html>

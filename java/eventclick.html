@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 5000px;
+        }
+        li{list-style: none; transition: 0.5s;}
+        ul{
+            position: fixed;
+            left: 30px;
+            top:40%
+            
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+    </ul>
+    <script>
+        let menu1 =document.querySelector("li:nth-child(1)");
+        let menu2 =document.querySelector("li:nth-child(2)");
+        let menu3 =document.querySelector("li:nth-child(3)");
+        window.addEventListener("scroll",function(){
+            let height = window.scrollY;
+            if(height >= 2000){
+                document.body.style.background = "red";
+            }else if(height >= 1000){
+                document.body.style.background = "blue";
+            }else{
+                document.body.style.background = "beige";
+            }
+        })
+        menu1.addEventListener("click",function(){
+            window.scrollTo({top:500,behavior:`smooth`});
+            console.log(window.scrollY);
+            menu1.style = "font-size: 30px"
+            menu2.style = "font-size: 20px"
+            menu3.style = "font-size: 20px"
+        })
+        menu2.addEventListener("click",function(){
+            window.scrollTo({top:1000,behavior:`smooth`});
+            console.log(window.scrollY);
+            menu1.style = "font-size: 20px"
+            menu2.style = "font-size: 30px"
+            menu3.style = "font-size: 20px"
+        })
+        menu3.addEventListener("click",function(){
+            window.scrollTo({top:2000,behavior:`smooth`});
+            console.log(window.scrollY);
+            menu1.style = "font-size: 20px"
+            menu2.style = "font-size: 20px"
+            menu3.style = "font-size: 30px"
+        })
+
+    </script>
+</body>
+</html>

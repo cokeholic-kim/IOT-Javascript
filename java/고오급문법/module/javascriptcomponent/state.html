@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const $app = document.querySelector("#app");
+        //초기상태
+        let state = {
+            students:["stu1","stu2","stu3","stu4"]
+        }
+        console.log(state.students);
+        //화면에 그리기
+        const render = ()=>{
+            const {students} = state; //객체 구조분해할당 { } students = ["stu1","stu2","stu3","stu4"]
+            $app.innerHTML = `
+            <ul>
+                ${students.map(stu=>`<li>${stu}</li>`).join("")}
+            </ul>
+            <button id="add">추가</button>
+            `;
+            document.querySelector("#add").addEventListener("click",function(){
+                setState({students:[...students,`stu${students.length+1}`]}) //같은 키값 다른 밸류
+                // {students:[stu1,stu2,stu3,stu4,`{length+1}...`]}  //같은 배열은 덮어 씌워짐 
+            })
+        }
+        render()
+        //상태 변경하기
+        const setState = (newstate)=>{
+            state = {...state,...newstate} //객체가있고 객체가 다시 들어갈때 키값이 같기때문에 state 의 value 는 newstate의 value값으로 덮어쓰워진다
+            render();
+        }
+      
+    </script>
+</body>
+</html>

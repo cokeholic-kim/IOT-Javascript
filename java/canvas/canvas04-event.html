@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: #eee;
+        }
+        button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        button:nth-of-type(1){
+            background-color: red;
+        }
+        button:nth-of-type(2){
+            background-color: blue;
+        }
+        button:nth-of-type(3){
+            background-color: yellow;
+        }
+        button:nth-of-type(4){
+            background-color: black;
+        }
+        #delete{
+            border-radius: 0;
+            background-color: white;
+            color: #333;
+            width: 200px;
+            height: 50px;
+        }
+        #plus{
+            border-radius: 0;
+            background-color: white;
+            color: #333;
+            width: 200px;
+            height: 50px;
+        }
+        #minus{
+            border-radius: 0;
+            background-color: white;
+            color: #333;
+            width: 200px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="500">
+    </canvas>
+    <div id="btns">
+        <button data-color="red"></button>
+        <button data-color="blue"></button>
+        <button data-color="yellow"></button>
+        <button data-color="black"></button>
+    </div>
+    <button id="delete">
+        모두지우기
+    </button>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+    <script>
+        
+        const canvas = document.querySelector("#canvas");
+        const ctx = canvas.getContext("2d");
+        let drawingMode; //true일때만 그리기
+        let linewidth = 30
+        ctx.lineWidth = linewidth ;
+        ctx.lineCap = "round"
+        document.querySelector("#plus").addEventListener("click",function(){
+            linewidth++
+            ctx.lineWidth = linewidth ;
+        })
+        document.querySelector("#minus").addEventListener("click",function(){
+            linewidth--
+            ctx.lineWidth = linewidth ;
+        })
+        function downHandler(){
+            drawingMode = true;
+        }
+        function upHandler(){
+            drawingMode = false
+        }
+        function moveHandler(e){
+            if(!drawingMode) return
+            let x= e.pageX
+            let y= e.pageY
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(x,y);
+            ctx.stroke();
+        }
+        document.querySelector("#btns").addEventListener("click",function(event){
+            ctx.strokeStyle = event.target.dataset.color
+        })
+        canvas.addEventListener("mousedown",downHandler);
+        canvas.addEventListener("mouseup",upHandler);
+        canvas.addEventListener("mousemove",moveHandler);
+        document.querySelector("#delete").addEventListener("click",function(){
+            console.log("지우기")
+            ctx.clearRect(0,0,canvas.width,canvas.height)
+        })
+    </script>
+</body>
+</html>

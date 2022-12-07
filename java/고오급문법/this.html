@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <li onclick="printLI(this)">list1</li>
+    <li onclick="printLI(this)">list2</li>
+    <li onclick="printLI(this)">list3</li>
+    <li onclick="printLI(this)">list4</li>
+    <select name="userName" id="userName" onchange="selectchange(this)">
+        <option value="1">1입니다</option>
+        <option value="2">2입니다.</option>
+        <option value="3">3입니다</option>
+    </select>
+    <script>
+        function printLI(li){
+            console.log(li.innerHTML);
+        }
+        function selectchange(se){
+            console.log(se.value)
+        }
+        let person = {
+            firstName:"John",
+            lastName:"doe",
+            fullName:function(){
+                return this.firstName + " "+this.lastName
+            }
+        }
+        console.log(person.fullName());
+        //rest parmeter
+        function add(...rest){
+            let sum = 0
+            rest.forEach(arr =>{
+                sum+=arr
+            })
+            return sum
+        }
+        let result1 =add(1,2,3)
+        let result2 =add(1,2,3,4)
+        let result3 =add(1,2,3,4,5)
+
+        const hello3 = (name) =>  `hello ${name}`
+        console.log(hello3(`aa`));
+        let str1 = "green";
+        console.log("안녕하세요" + str1 + "씨~~~")
+        console.log(`안녕하세요 ${str1}씨~~~`)
+    </script>
+</body>
+</html>

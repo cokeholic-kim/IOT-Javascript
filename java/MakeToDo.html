@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        li{
+            list-style: none;
+        }
+        #wrap{
+            width: 100%;
+            max-width: 900px;
+            height: 100vh;
+            margin: 0 auto;
+            background-color: aliceblue;
+        }
+        #todoheader{
+            background: linear-gradient(45deg, #D0368A 0%, #708AD4 99%);
+            height: 15%;
+            text-align: center;
+            padding: 3%;
+        }
+        #todoheader h1{
+            color: #fff;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        #inputbox{
+            width: 90%;
+            height: 40%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #inputbox input{
+            width: 85%;
+            height: 100%;
+            border-radius: 30px;
+            border: 1px solid #fff;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        #inputbox button{
+            width: 9%;
+            height: auto;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        #todoList li{
+            background-color: white;
+            width: 100%;
+            margin: 5px 0;
+            padding: 0 80px;
+            height: 50px;
+            font-size: 28px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #todoList li p{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="todoheader">
+            <h1>To Do List</h1>
+            <div id="inputbox">
+                <input type="text">
+                <button>+</button>
+            </div>
+        </div>
+        <div id="todoList" >
+            <ul id="todoul">
+            </ul>
+        </div>
+    </div>
+    <script>
+        // 인풋태그에 투두리스트를 작성하면 ul요소 로 들어가게만듬
+        // 투두리스트input.value 가 새로만들어진li에 innerHtml 로 들어가고
+        // 새로만들어진li 는 appendchild로 ul에 들어감
+        const todoul = document.querySelector("#todoul");
+        let inputval = document.querySelector("input");
+        const todobutton = document.querySelector("button");
+        
+        todobutton.addEventListener("click",clickTodo)
+        function clickTodo(){
+            const li = document.createElement("li");
+            li.innerHTML = `${inputval.value}<p>X</p>`;
+            todoul.appendChild(li);
+            inputval.value = ""
+            pEvent()
+        }
+        function pEvent(){
+            let ps = document.querySelectorAll("li p");
+            if(!ps){
+                return
+            }
+            ps.forEach(a=>a.addEventListener("click",function(){
+                this.parentElement.remove();
+                console.log(this.parentElement)
+            }))
+        }
+
+        // li 안의 p를 클릭하면 해당p의 부모 li가 삭제
+    </script>
+</body>
+</html>

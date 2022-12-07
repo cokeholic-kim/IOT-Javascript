@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Accumulator(startNum){
+        //         this.startNum = startNum;
+        //         this.read = function(){
+        //             return this.startNum += parseInt(prompt("스타트 넘버에 더할 값 입력"));
+        //         }
+        // }
+        // let accumulator = new Accumulator(15);
+        // console.log(accumulator);
+        // accumulator.read()
+
+        function Studnets(name,age,score1,score2){
+            this.name = name;
+            this.age = age;
+            this.score1 = score1;
+            this.score2 = score2;
+            this.total = function(){
+               return this.score1 + this.score2
+            }
+        }
+        let students1 = new Studnets("green",22,85,75);
+        let students2 = new Studnets("blue",25,80,60);
+        console.log(students1.total())
+        console.log(students2.total())
+    </script>
+</body>
+</html>

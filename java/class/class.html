@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체 리터럴
+        let dog = {
+            name: "구름",
+            age: 3,
+            color:"흰색",
+            sound(){
+                console.log("멍")
+            }
+        }
+        // let name = dog.name;
+        // let sound = dog.sound;
+        // console.log("dog.sound()")
+
+        let {name,sound} = dog;
+        console.log(name)
+        sound()
+
+        class Dog{
+            constructor(name,age,color){
+                this.name = name;
+                this.age= age;
+                this.color = color; 
+            }
+            sound1(){
+                console.log("wangwang")
+            }
+        }
+        let dog1 = new Dog("구름",3,"흰색")
+        let { sound1 } = dog1;
+        console.log(sound1);
+
+    </script>
+</body>
+</html>

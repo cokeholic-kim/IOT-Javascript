@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Time Until Christmas Eve</h1>
+    <h2></h2>
+    <script>
+        UntilChristmas ()
+        function UntilChristmas (){
+            let Today =new Date();
+            const Christmas = new Date(2022,11,25,0,0,0);    
+            let Until = Christmas-Today;
+            const dateUntil =String(Math.floor(Until / (1000 * 60 * 60 * 24)));
+            console.log(dateUntil);
+            const hourUntil = String(Math.floor((Until / (1000 * 60 * 60 )) % 24));
+            console.log(hourUntil);
+            const minuteUntil = String(Math.floor((Until / (1000*60)) % 60));
+            console.log(minuteUntil);
+            const secondUntil = String(Math.floor(Until / 1000 % 60));
+            console.log(secondUntil);
+            document.querySelector("h2").innerHTML =`${dateUntil.padStart(2,"0")}d ${hourUntil.padStart(2,"0")}h ${minuteUntil.padStart(2,"0")}m ${secondUntil.padStart(2,"0")}s`
+        }
+        setInterval(UntilChristmas,1000)
+        // ?????!!!
+    </script>
+</body>
+</html>

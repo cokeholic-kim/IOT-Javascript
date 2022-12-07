@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color:#fff ;
+            border-radius: 10px;
+            width: 60px;
+            height: 20px;
+        }
+        body>div{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            A음료수: 500원<br/>
+            B음료수: 700원<br/>
+            C음료수: 1000원
+        </div>
+        <button onclick="inputMoney(100)">100</button>
+        <button onclick="inputMoney(500)">500</button>
+        <button onclick="inputMoney(1000)">1000 </button>
+        <p id="money"></p>
+        <!-- abc음료중에 선택가능한음료 -->
+        <p id="select"></p>
+        <button onclick="reset()">reset</button>
+    </div>
+
+    
+    <script>
+
+        //버튼을 클릭하면 머니에 해당버튼의 금액을 더해준다  해결
+        //금액은 id money p 태그에 출력 해결
+        //금액에 따라 살수잇는 음료수종류는 id select인 p요소출력
+        const moneyNow = document.querySelector("#money")
+        console.log(moneyNow)
+        const moneyselect = document.querySelector("#select");
+        console.log(moneyselect)
+        let money = 0
+        function reset(){
+            money=0;
+            moneyNow.innerHTML = "";
+            moneyselect.innerHTML = "";
+        }
+        function inputMoney(inputM){
+            money += inputM;
+            let selectMenu = "";
+            moneyNow.innerHTML = money;
+            console.log(`${inputM}을 클릭했습니다.`);
+            console.log(money);
+            if(money>=500){
+                selectMenu ="A음료수"
+                if(money>=700){
+                    selectMenu="A음료수,B음료수"
+                    if(money>=1000){
+                        selectMenu="A음료수,B음료수,C음료수"
+                    }
+                }
+            }else{ selectMenu ="못사요"}
+            moneyselect.innerHTML =  selectMenu;
+        }
+        // 머니 +100
+
+
+
+
+
+    </script>
+</body>
+</html>

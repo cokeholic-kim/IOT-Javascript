@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //id 가 1인 데이터 수정
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("PUT","https://jsonplaceholder.typicode.com/posts/1");
+        // xhr.setRequestHeader("content-type","application/json; charset=UTF=8");
+        // xhr.send(JSON.stringify({title:"foo",body:"bar",userId:1}));
+
+        // xhr.onload = ()=>{
+        //     if(xhr.status == 200){
+        //         //put 요청이 정상적으로 완료가 되면 200
+        //         const res = JSON.parse(xhr.response)
+        //         console.log(res)
+        //     }else{
+        //         //에러가 발생한 경우
+        //         console.error(xhr.status , xhr.statusText)
+        //     }
+        // }
+        
+        // id가 1인데이터 삭제
+        const xhr =new XMLHttpRequest();
+        xhr.open("DELETE","https://jsonplaceholder.typicode.com/posts/1");
+        xhr.setRequestHeader("content-type","application/json; charset=UTF-8");
+        xhr.send();
+
+        xhr.onload = ()=>{
+            if(xhr.status === 200){
+                const res = xhr.response;
+                console.log(res);
+            }else{
+                // 응답에러
+                console.error(xhr.status , xhr.statusText);
+            }
+        }
+    </script>
+</body>
+</html>

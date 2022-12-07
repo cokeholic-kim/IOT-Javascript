@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //프로미스 프로듀서
+        let promise = new Promise ((resolve,reject)=>{
+            console.log("수행중");
+            setTimeout(()=>{
+                resolve("성공");
+            },2000)
+        });
+        // 프로미스 컨슈머
+        promise.then(value=>{ //then 에는 성공했을때 나오는 값을 받음
+            console.log(value);
+        }).catch(error=>{
+            console.log(error)
+        }) //promise에 실패한 값을 받음
+        .finally(()=>{
+            console.log("끝")
+        })
+        console.log("ggggg") //동기적이면 이게 제일 마지막에 실행되어야함
+
+    </script>
+</body>
+</html>

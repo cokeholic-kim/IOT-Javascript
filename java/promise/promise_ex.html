@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getDataPromise(){
+            return new Promise((resolve,reject)=>{
+                const xhr = new XMLHttpRequest();
+                //메소드와 path정의
+                xhr.open("GET","https://jsonplaceholder.typicode.com/aaa/1")
+                //header값중 content-type을 정의
+                xhr.setRequestHeader("content-type","application/json")
+                xhr.send();
+                // xhr.addeventlistner("load",function)
+                xhr.onload = ()=>{
+                    if(xhr.status===200){
+                        const res = JSON.parse(xhr.response)
+                        resolve(res)
+                    }else{
+                        console.error(xhr.error , xhr.statusText);
+                        reject(new Error(xhr.status))
+                    }
+                }
+            })
+        }
+        getDataPromise().then((res)=>{
+            console.log(res)
+        }).catch(error=>{
+            console.log(error);
+        })
+    </script>
+</body>
+</html>

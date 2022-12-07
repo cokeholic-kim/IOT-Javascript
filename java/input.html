@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username" value="수요일">
+    <button onclick="inputprint()">클릭</button>
+    <ul>
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+        <li>list4</li>
+    </ul>
+    <script>
+        const input = document.querySelector("#username");
+        const ul =document.querySelector("ul");
+        const li = document.createElement("li")
+        function inputprint(){
+            input.value = ""
+        }
+        // parentElement
+        function liclick(aa){
+            console.log(aa.parentElement)
+        }
+        ul.addEventListener("click",function(e){
+            let li = e.target.parentElement; //이벤트에서 클릭된 타겟을 가리킴
+            console.log(li);
+        })
+
+        ul.after("곧 쉬는시간")
+        li.innerHTML = "새로운<span>li</span>입니다."
+        ul.appendChild(li)
+    </script>
+</body>
+</html>
